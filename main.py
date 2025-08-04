@@ -39,10 +39,9 @@ st.markdown("<div class='main'>", unsafe_allow_html=True)
 st.markdown("## 📧 Email Spam Classifier")
 st.markdown("Predict whether an email message is **Spam** or **Not Spam** using a machine learning model.")
 
-# Clear button (outside the form)
+# Clear button (outside form to avoid rerun error)
 if st.button("🧹 Clear"):
     st.session_state.user_input = ""
-    st.experimental_rerun()
 
 # Input form
 with st.form(key="spam_form"):
