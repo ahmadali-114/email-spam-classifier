@@ -4,7 +4,6 @@ import re
 
 # ========== SETTINGS ==========
 SPAM_KEYWORDS = ["free", "win", "winner", "cash", "click", "offer", "buy", "buy now", "congratulations", "urgent"]
-CONFIDENCE_BAR_COLORS = ["#e6ffed", "#ffe6e6"]  # greenish, reddish
 
 # ========== CUSTOM CSS ==========
 st.markdown("""
@@ -61,16 +60,7 @@ st.markdown("Enter a message below and find out whether it's **Spam** or **Not S
 # ========== FORM ==========
 with st.form(key="spam_form"):
     user_input = st.text_area("🔍 Type your message:", value=st.session_state.user_input, height=200)
-
-    col1, col2 = st.columns([1, 1])
-    with col1:
-        classify = st.form_submit_button("🚀 Classify")
-    with col2:
-        clear = st.form_submit_button("🧹 Clear")
-
-    if clear:
-        st.session_state.user_input = ""
-        st.experimental_rerun()
+    classify = st.form_submit_button("🚀 Classify")
 
     if classify and user_input.strip() != "":
         st.session_state.user_input = user_input
@@ -100,7 +90,7 @@ st.markdown("#### ⚙️ Model Info")
 st.markdown("""
 - **Algorithm:** Multinomial Naive Bayes  
 - **Vectorizer:** TF-IDF  
-- **Dataset:** SMS Spam Collection  
+- **Dataset:** Email/SMS Spam Collection  
 - **Accuracy:** ~98%
 """)
 
