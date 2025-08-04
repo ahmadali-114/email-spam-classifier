@@ -30,7 +30,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Session state for input
+# Initialize session state
 if "user_input" not in st.session_state:
     st.session_state.user_input = ""
 
@@ -39,14 +39,15 @@ st.markdown("<div class='main'>", unsafe_allow_html=True)
 st.markdown("## 📧 Email Spam Classifier")
 st.markdown("Predict whether an email message is **Spam** or **Not Spam** using a machine learning model.")
 
+# Clear button (outside the form)
+if st.button("🧹 Clear"):
+    st.session_state.user_input = ""
+    st.experimental_rerun()
+
 # Input form
 with st.form(key="spam_form"):
     user_input = st.text_area("🔍 Enter your message:", value=st.session_state.user_input, height=200)
-    col1, col2 = st.columns([1, 1])
-    with col1:
-        submitted = st.form_submit_button("🚀 Classify")
-    with col2:
-        clear = st.form_submit_button("🧹 Clear")
+    submitted = st.form_submit_button("🚀 Classify")
 
     if submitted and user_input.strip() != "":
         st.session_state.user_input = user_input
@@ -57,10 +58,6 @@ with st.form(key="spam_form"):
             f"Result: {label}<br>Confidence: {confidence}%</div>",
             unsafe_allow_html=True
         )
-
-    if clear:
-        st.session_state.user_input = ""
-        st.experimental_rerun()
 
 # Footer
 st.markdown("---")
