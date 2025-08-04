@@ -3,7 +3,35 @@ from app.utils.helper import classify_message
 import re
 
 # ========== SETTINGS ==========
-SPAM_KEYWORDS = ["free", "win", "winner", "cash", "click", "offer", "buy", "buy now", "congratulations", "urgent"]
+SPAM_KEYWORDS = [
+    # Common spam bait
+    "free", "win", "winner", "cash", "click", "offer", "buy", "buy now", "congratulations", "urgent",
+    "limited time", "deal", "discount", "act now", "subscribe", "earn", "money", "guarantee", "risk-free",
+    "no cost", "trial", "urgent action", "apply now", "claim", "call now", "order now", "extra income", 
+    "prize", "investment", "double your", "miracle", "cheap", "save big", "amazing", "clearance", 
+    "hot deal", "don't miss", "fast cash", "easy", "instant", "100% free",
+
+    # Financial scams
+    "bank account", "wire transfer", "lottery", "inheritance", "paypal", "western union", "bitcoin", "crypto", "atm card",
+    "account verification", "limited account access", "send funds", "security alert", "unusual login attempt",
+
+    # Medical/health
+    "weight loss", "no prescription", "viagra", "pills", "cure", "doctor approved", "enlargement", "treatment", "skin care",
+
+    # Adult/spammy
+    "adult", "xxx", "hot girls", "nudes", "escort", "live cam", "dating", "click for sex",
+
+    # Foreign language spam phrases (commonly used internationally)
+    "gratis", "ganar dinero", "dinero rápido", "clique aqui", "cadeau gratuit", "gagnez", "argent", "kaufen", "kostenlos", "clic aquí",
+
+    # Psychological pressure
+    "you have been selected", "act fast", "final notice", "exclusive deal", "this won't last", "your account is at risk",
+
+    # Pakistan-specific spam
+    "bisp", "cnic", "ehsaas", "ap jeet gaye", "sarkari scheme", "easypaisa", "jazzcash", "inaami scheme",
+    "lottery", "govt scheme", "click karein", "turant rabta karein", "10 lakh", "qeemti inaam"
+
+]
 
 # ========== CUSTOM CSS ==========
 st.markdown("""
